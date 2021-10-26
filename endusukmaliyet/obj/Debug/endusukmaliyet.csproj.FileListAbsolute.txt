@@ -1,0 +1,10 @@
+C:\Users\Rabia\source\repos\endusukmaliyet\endusukmaliyet\bin\Debug\endusukmaliyet.exe.config
+C:\Users\Rabia\source\repos\endusukmaliyet\endusukmaliyet\bin\Debug\endusukmaliyet.exe
+C:\Users\Rabia\source\repos\endusukmaliyet\endusukmaliyet\bin\Debug\endusukmaliyet.pdb
+C:\Users\Rabia\source\repos\endusukmaliyet\endusukmaliyet\obj\Debug\endusukmaliyet.csproj.AssemblyReference.cache
+C:\Users\Rabia\source\repos\endusukmaliyet\endusukmaliyet\obj\Debug\endusukmaliyet.Form1.resources
+C:\Users\Rabia\source\repos\endusukmaliyet\endusukmaliyet\obj\Debug\endusukmaliyet.Properties.Resources.resources
+C:\Users\Rabia\source\repos\endusukmaliyet\endusukmaliyet\obj\Debug\endusukmaliyet.csproj.GenerateResource.cache
+C:\Users\Rabia\source\repos\endusukmaliyet\endusukmaliyet\obj\Debug\endusukmaliyet.csproj.CoreCompileInputs.cache
+C:\Users\Rabia\source\repos\endusukmaliyet\endusukmaliyet\obj\Debug\endusukmaliyet.exe
+C:\Users\Rabia\source\repos\endusukmaliyet\endusukmaliyet\obj\Debug\endusukmaliyet.pdb
