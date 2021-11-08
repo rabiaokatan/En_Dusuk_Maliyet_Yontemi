@@ -35,6 +35,7 @@ namespace endusukmaliyet
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
+            this.btnHesapla = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // textBox1
@@ -91,11 +92,22 @@ namespace endusukmaliyet
             this.panel1.Size = new System.Drawing.Size(1375, 689);
             this.panel1.TabIndex = 7;
             // 
+            // btnHesapla
+            // 
+            this.btnHesapla.Location = new System.Drawing.Point(887, 22);
+            this.btnHesapla.Name = "btnHesapla";
+            this.btnHesapla.Size = new System.Drawing.Size(136, 35);
+            this.btnHesapla.TabIndex = 8;
+            this.btnHesapla.Text = "Hesapla";
+            this.btnHesapla.UseVisualStyleBackColor = true;
+            this.btnHesapla.Click += new System.EventHandler(this.btnHesapla_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1376, 776);
+            this.Controls.Add(this.btnHesapla);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
@@ -117,6 +129,7 @@ namespace endusukmaliyet
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Button btnHesapla;
     }
 }
 
