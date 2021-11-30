@@ -17,7 +17,7 @@ namespace endusukmaliyet
             InitializeComponent();
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e) //oluştur butonu
         {
 
             Point loc = this.panel1.Location;
@@ -90,7 +90,7 @@ namespace endusukmaliyet
                 if (c is TextBox)
                 {
                     TextBox tb = c as TextBox;
-                    MessageBox.Show("i: " + (i ).ToString() + "j: " + (j).ToString());
+                    MessageBox.Show("satir(j): " + (j).ToString() + "  sutun(i): " + (i % (sutun + 1)==0 ?  sutun+1 : i % (sutun + 1)).ToString() +" Veri= " +tb.Text);
 
                     if (i % (sutun+1) == 0)
                     {
