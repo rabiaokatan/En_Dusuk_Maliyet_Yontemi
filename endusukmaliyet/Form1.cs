@@ -11,15 +11,14 @@ using System.Windows.Forms;
 namespace endusukmaliyet
 {
     public partial class Form1 : Form
-    {
+    {  
         public Form1()
-        {
+        {  
             InitializeComponent();
         }
 
         private void button1_Click(object sender, EventArgs e) //oluştur butonu
         {
-
             Point loc = this.panel1.Location;
 
             int X_coordinate = loc.X;
@@ -44,7 +43,7 @@ namespace endusukmaliyet
 
                     textBoxes[i] = new TextBox();
                     textBoxes[i].Width = 30;
-                    textBoxes[i].Height = 30;
+                    textBoxes[i].Height = 30;  
 
                     X_coordinate += 35;
 
@@ -53,11 +52,17 @@ namespace endusukmaliyet
                     panel1.Controls.Add(textBoxes[i]);
                     panel1.Show();
 
+                    if(j==sutun || i==satir)
+                    {
+                        textBoxes[i].BackColor = Color.MistyRose;
+                    }
+
                     //Arz ve Talep sütununlarının kesiştiği noktadaki textBox disabled edildi:
                     if (i == satir && j == sutun)
                     {
                         textBoxes[i].Text = "";
                         textBoxes[i].Enabled = false;
+                        textBoxes[i].BackColor = panel1.BackColor;
                     }
 
                     if (j == sutun)
@@ -86,7 +91,7 @@ namespace endusukmaliyet
             int sutun = int.Parse(textBox2.Text);
 
             int[,] matris = new int[satir, sutun];
-            int[] arz = new int[satir * sutun];
+            int[] arz = new int[satir];
             int[] talep = new int[sutun];
             int[] rf = new int[satir];
             int[] cf = new int[sutun];
@@ -247,5 +252,7 @@ namespace endusukmaliyet
         {
             GetTextBoxStrings();
         }
+
+       
     }
 }

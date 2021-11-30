@@ -51,8 +51,8 @@ namespace endusukmaliyet
             // 
             // button1
             // 
-            this.button1.Font = new System.Drawing.Font("Palatino Linotype", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button1.Location = new System.Drawing.Point(692, 26);
+            this.button1.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.button1.Location = new System.Drawing.Point(701, 26);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(136, 35);
             this.button1.TabIndex = 1;
@@ -98,8 +98,8 @@ namespace endusukmaliyet
             // 
             // btnHesapla
             // 
-            this.btnHesapla.Font = new System.Drawing.Font("Palatino Linotype", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnHesapla.Location = new System.Drawing.Point(834, 26);
+            this.btnHesapla.Font = new System.Drawing.Font("Palatino Linotype", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.btnHesapla.Location = new System.Drawing.Point(856, 26);
             this.btnHesapla.Name = "btnHesapla";
             this.btnHesapla.Size = new System.Drawing.Size(136, 35);
             this.btnHesapla.TabIndex = 8;
@@ -111,7 +111,7 @@ namespace endusukmaliyet
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Palatino Linotype", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label3.ForeColor = System.Drawing.Color.Red;
+            this.label3.ForeColor = System.Drawing.Color.Firebrick;
             this.label3.Location = new System.Drawing.Point(24, 9);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(314, 64);
@@ -123,6 +123,7 @@ namespace endusukmaliyet
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Palatino Linotype", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label4.ForeColor = System.Drawing.Color.Firebrick;
             this.label4.Location = new System.Drawing.Point(1080, 23);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(103, 38);
