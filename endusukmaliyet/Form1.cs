@@ -37,7 +37,7 @@ namespace endusukmaliyet
 
                 Label l = new Label();
                 Label ll = new Label();
-                TextBox[] textBoxes = new TextBox[satir * sutun];
+                TextBox[] textBoxes = new TextBox[satir+1 * sutun+1];
 
                 for (int j = 0; j < sutun + 1; j++)
                 {
@@ -49,8 +49,16 @@ namespace endusukmaliyet
                     X_coordinate += 35;
 
                     textBoxes[i].Text = (i + 1).ToString();
+
                     panel1.Controls.Add(textBoxes[i]);
                     panel1.Show();
+
+                    //Arz ve Talep sütununlarının kesiştiği noktadaki textBox disabled edildi:
+                    if (i == satir && j==sutun)
+                    {
+                        textBoxes[i].Text = "";
+                        textBoxes[i].Enabled = false;
+                    }
 
                     if (j == sutun)
                     {
@@ -77,9 +85,9 @@ namespace endusukmaliyet
             int satir = int.Parse(textBox1.Text);
             int sutun = int.Parse(textBox2.Text);
 
-            //int[,] matris = new int[satir, sutun];
-            //int[] arz = new int[satir * sutun];
-            //int[] talep = new int[satir * sutun];
+            int[,] matris = new int[satir + 1, sutun + 1];
+            int[] arz = new int[satir * sutun];
+            int[] talep = new int[sutun * satir];
             //int[] satirx = new int[satir];
             //int[] sutunx = new int[sutun];
 
@@ -89,10 +97,32 @@ namespace endusukmaliyet
             {
                 if (c is TextBox)
                 {
+                    int yeniSatir = j;
+                    int yeniSutun = i % (sutun + 1) == 0 ? sutun + 1 : i % (sutun + 1);
                     TextBox tb = c as TextBox;
-                    MessageBox.Show("satir(j): " + (j).ToString() + "  sutun(i): " + (i % (sutun + 1)==0 ?  sutun+1 : i % (sutun + 1)).ToString() +" Veri= " +tb.Text);
 
-                    if (i % (sutun+1) == 0)
+                    //matris'e textBox verilerini aktarma kısmı
+                    if (yeniSatir != satir + 1)
+                    {
+                        if (yeniSutun != sutun + 1)
+                        {
+                            matris[yeniSatir, yeniSutun] = int.Parse(tb.Text);
+                        }
+                    }
+
+                    //Arz dizisine textBox verilerini aktarma kısmı
+                    if (yeniSutun == sutun + 1 &&  yeniSatir != satir+1)
+                    {
+                        arz[yeniSutun] = int.Parse(tb.Text);
+                    }
+
+                    //Talep dizisine textBox verilerini aktarma kısmı
+                    if (yeniSatir == satir + 1 && yeniSutun != sutun + 1 )
+                    {
+                        talep[yeniSatir] = int.Parse(tb.Text);
+                    }
+
+                    if (i % (sutun + 1) == 0)
                     {
                         j++;
                     }
