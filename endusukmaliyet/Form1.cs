@@ -37,7 +37,7 @@ namespace endusukmaliyet
 
                 Label l = new Label();
                 Label ll = new Label();
-                TextBox[] textBoxes = new TextBox[satir+1 * sutun+1];
+                TextBox[] textBoxes = new TextBox[satir + 1 * sutun + 1];
 
                 for (int j = 0; j < sutun + 1; j++)
                 {
@@ -48,13 +48,13 @@ namespace endusukmaliyet
 
                     X_coordinate += 35;
 
-                    textBoxes[i].Text = (i + 1).ToString();
+                    //textBoxes[i].Text = (i + 1).ToString();
 
                     panel1.Controls.Add(textBoxes[i]);
                     panel1.Show();
 
                     //Arz ve Talep sütununlarının kesiştiği noktadaki textBox disabled edildi:
-                    if (i == satir && j==sutun)
+                    if (i == satir && j == sutun)
                     {
                         textBoxes[i].Text = "";
                         textBoxes[i].Enabled = false;
@@ -85,11 +85,12 @@ namespace endusukmaliyet
             int satir = int.Parse(textBox1.Text);
             int sutun = int.Parse(textBox2.Text);
 
-            int[,] matris = new int[satir + 1, sutun + 1];
+            int[,] matris = new int[satir, sutun];
             int[] arz = new int[satir * sutun];
-            int[] talep = new int[sutun * satir];
-            //int[] satirx = new int[satir];
-            //int[] sutunx = new int[sutun];
+            int[] talep = new int[sutun];
+            int[] rf = new int[satir];
+            int[] cf = new int[sutun];
+            int min, b, d, p = 0, q = 0, c1, c2, sum = 0;
 
             int i = 1;
             int j = 1;
@@ -106,20 +107,25 @@ namespace endusukmaliyet
                     {
                         if (yeniSutun != sutun + 1)
                         {
-                            matris[yeniSatir, yeniSutun] = int.Parse(tb.Text);
+                            matris[yeniSatir - 1, yeniSutun - 1] = int.Parse(tb.Text);
+
                         }
                     }
 
-                    //Arz dizisine textBox verilerini aktarma kısmı
-                    if (yeniSutun == sutun + 1 &&  yeniSatir != satir+1)
+                    //Arz dizisine textBox verilerini aktarma kısmı       
+                    if (yeniSutun == sutun + 1 && yeniSatir != satir + 1)
                     {
-                        arz[yeniSutun] = int.Parse(tb.Text);
+                        //dizi 0. indeksten başlar diye yeniSatir-1 yapıyorum:
+                        arz[yeniSatir - 1] = int.Parse(tb.Text);
+
                     }
 
                     //Talep dizisine textBox verilerini aktarma kısmı
-                    if (yeniSatir == satir + 1 && yeniSutun != sutun + 1 )
+                    if (yeniSatir == satir + 1 && yeniSutun != sutun + 1)
                     {
-                        talep[yeniSatir] = int.Parse(tb.Text);
+                        //dizi 0. indeksten başlar diye yeniSutun-1 yapıyorum:
+                        talep[yeniSutun - 1] = int.Parse(tb.Text);
+
                     }
 
                     if (i % (sutun + 1) == 0)
@@ -128,9 +134,114 @@ namespace endusukmaliyet
                     }
 
                     i++;
+
+                }
+            }
+            ///En düşük maliyet hesaplanması algoritma kısmı
+            for (i = 0; i < satir; i++)
+            {
+                rf[i] = 0;
+            }
+            for (i = 0; i < sutun; i++)
+            {
+                cf[i] = 0;
+            }
+            b = satir;
+            d = sutun;
+
+
+            while (b > 0 && d > 0)
+            {
+                min = 1000;
+                for (i = 0; i < satir; i++)
+                {
+                    if (rf[i] != 1)
+                    {
+                        for (j = 0; j < sutun; j++)
+                        {
+                            if (cf[j] != 1)
+                            {
+                                if (min > matris[i, j])
+                                {
+                                    min = matris[i, j];
+                                    p = i;
+                                    q = j;
+
+                                }
+                            }
+                        }
+                    }
+                }
+                if (arz[p] < talep[q])
+                {
+                    c1 = arz[p];
+
+                }
+                else
+                {
+                    c1 = talep[q];
+
                 }
 
+
+                for (i = 0; i < satir; i++)
+                {
+                    if (rf[i] != 1)
+                    {
+                        for (j = 0; j < sutun; j++)
+                        {
+                            if (cf[j] != 1)
+
+                            {
+                                if (min == matris[i, j])
+                                {
+                                    if (arz[i] < talep[j])
+                                    {
+                                        c2 = arz[i];
+                                    }
+                                    else
+                                    {
+                                        c2 = talep[j];
+                                    }
+                                    if (c2 > c1)
+                                    {
+                                        c1 = c2;
+                                        p = i;
+                                        q = j;
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+
+                if (arz[p] < talep[q])
+                {
+                    sum += matris[p, q] * arz[p];
+                    talep[q] -= arz[p];
+                    rf[p] = 1;
+                    b--;
+                }
+                else if (arz[p] > talep[q])
+                {
+                    sum = sum + matris[p, q] * talep[q];
+                    arz[p] -= talep[q];
+                    cf[q] = 1;
+                    d--;
+                }
+                else if (arz[p] == talep[q])
+                {
+                    sum = sum + matris[p, q] * arz[p];
+                    rf[p] = 1;
+                    cf[q] = 1;
+                    b--;
+                    d--;
+                }
             }
+
+            lbl_sonuc.Text = sum.ToString();
+            MessageBox.Show("Toplam maliyet: " + sum);
+         
         }
         private void btnHesapla_Click(object sender, EventArgs e)
         {

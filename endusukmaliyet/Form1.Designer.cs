@@ -37,12 +37,14 @@ namespace endusukmaliyet
             this.panel1 = new System.Windows.Forms.Panel();
             this.btnHesapla = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
+            this.label4 = new System.Windows.Forms.Label();
+            this.lbl_sonuc = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // textBox1
             // 
             this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBox1.Location = new System.Drawing.Point(908, 9);
+            this.textBox1.Location = new System.Drawing.Point(567, 7);
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(108, 34);
             this.textBox1.TabIndex = 0;
@@ -50,7 +52,7 @@ namespace endusukmaliyet
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Palatino Linotype", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.button1.Location = new System.Drawing.Point(1070, 26);
+            this.button1.Location = new System.Drawing.Point(692, 26);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(136, 35);
             this.button1.TabIndex = 1;
@@ -61,7 +63,7 @@ namespace endusukmaliyet
             // textBox2
             // 
             this.textBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.textBox2.Location = new System.Drawing.Point(908, 51);
+            this.textBox2.Location = new System.Drawing.Point(567, 49);
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(108, 34);
             this.textBox2.TabIndex = 3;
@@ -70,7 +72,7 @@ namespace endusukmaliyet
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Palatino Linotype", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(796, 9);
+            this.label1.Location = new System.Drawing.Point(455, 7);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(72, 32);
             this.label1.TabIndex = 4;
@@ -80,7 +82,7 @@ namespace endusukmaliyet
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Palatino Linotype", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.label2.Location = new System.Drawing.Point(796, 51);
+            this.label2.Location = new System.Drawing.Point(455, 49);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(89, 32);
             this.label2.TabIndex = 5;
@@ -97,7 +99,7 @@ namespace endusukmaliyet
             // btnHesapla
             // 
             this.btnHesapla.Font = new System.Drawing.Font("Palatino Linotype", 7.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
-            this.btnHesapla.Location = new System.Drawing.Point(1230, 26);
+            this.btnHesapla.Location = new System.Drawing.Point(834, 26);
             this.btnHesapla.Name = "btnHesapla";
             this.btnHesapla.Size = new System.Drawing.Size(136, 35);
             this.btnHesapla.TabIndex = 8;
@@ -108,19 +110,42 @@ namespace endusukmaliyet
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Mongolian Baiti", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(42, 31);
+            this.label3.Font = new System.Drawing.Font("Palatino Linotype", 13.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label3.ForeColor = System.Drawing.Color.Red;
+            this.label3.Location = new System.Drawing.Point(24, 9);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(611, 30);
+            this.label3.Size = new System.Drawing.Size(314, 64);
             this.label3.TabIndex = 9;
-            this.label3.Text = "Ulaştırma Problemi - En Düşük Maliyet Yöntemi";
+            this.label3.Text = "Ulaştırma Problemi  \r\nEn Düşük Maliyet Yöntemi";
+            this.label3.TextAlign = System.Drawing.ContentAlignment.TopCenter;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Font = new System.Drawing.Font("Palatino Linotype", 16.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.label4.Location = new System.Drawing.Point(1080, 23);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(103, 38);
+            this.label4.TabIndex = 0;
+            this.label4.Text = "Sonuç:";
+            // 
+            // lbl_sonuc
+            // 
+            this.lbl_sonuc.AutoSize = true;
+            this.lbl_sonuc.Font = new System.Drawing.Font("Palatino Linotype", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(162)));
+            this.lbl_sonuc.Location = new System.Drawing.Point(1199, 30);
+            this.lbl_sonuc.Name = "lbl_sonuc";
+            this.lbl_sonuc.Size = new System.Drawing.Size(0, 27);
+            this.lbl_sonuc.TabIndex = 1;
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1376, 776);
+            this.Controls.Add(this.lbl_sonuc);
             this.Controls.Add(this.label3);
+            this.Controls.Add(this.label4);
             this.Controls.Add(this.btnHesapla);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.label2);
@@ -145,6 +170,8 @@ namespace endusukmaliyet
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button btnHesapla;
         private System.Windows.Forms.Label label3;
+        private System.Windows.Forms.Label lbl_sonuc;
+        private System.Windows.Forms.Label label4;
     }
 }
 
