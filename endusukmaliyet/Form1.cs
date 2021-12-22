@@ -7,13 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Text.RegularExpressions;
+
 
 namespace endusukmaliyet
 {
     public partial class Form1 : Form
-    {  
+    {
         public Form1()
-        {  
+        {
             InitializeComponent();
         }
 
@@ -24,66 +26,100 @@ namespace endusukmaliyet
             int X_coordinate = loc.X;
             int Y_coordinate = loc.Y;
 
-            int satir = int.Parse(textBox1.Text);
-            int sutun = int.Parse(textBox2.Text);
-
-            panel1.Controls.Clear();
-
-            for (int i = 0; i < satir + 1; i++)
+            if (textBox1.Text == "" || textBox2.Text == "")
             {
-                X_coordinate = loc.X + 30;
-                Y_coordinate = Y_coordinate + 30;
+                MessageBox.Show("Lütfen satır ve sütun sayısını giriniz!");
+            }
+            else
+            {
 
-                Label l = new Label();
-                Label ll = new Label();
-                TextBox[] textBoxes = new TextBox[satir + 1 * sutun + 1];
+                int satir = int.Parse(textBox1.Text);
+                int sutun = int.Parse(textBox2.Text);
 
-                for (int j = 0; j < sutun + 1; j++)
+                panel1.Controls.Clear();
+
+                for (int i = 0; i < satir + 1; i++)
                 {
+                    X_coordinate = loc.X + 30;
+                    Y_coordinate = Y_coordinate + 30;
 
-                    textBoxes[i] = new TextBox();
-                    textBoxes[i].Width = 30;
-                    textBoxes[i].Height = 30;  
+                    Label l = new Label();
+                    Label ll = new Label();
+                    TextBox[] textBoxes = new TextBox[satir + 1 * sutun + 1];
 
-                    X_coordinate += 35;
-
-                    //textBoxes[i].Text = (i + 1).ToString();
-
-                    panel1.Controls.Add(textBoxes[i]);
-                    panel1.Show();
-
-                    if(j==sutun || i==satir)
+                    for (int j = 0; j < sutun + 1; j++)
                     {
-                        textBoxes[i].BackColor = Color.MistyRose;
-                    }
 
-                    //Arz ve Talep sütununlarının kesiştiği noktadaki textBox disabled edildi:
-                    if (i == satir && j == sutun)
-                    {
-                        textBoxes[i].Text = "";
-                        textBoxes[i].Enabled = false;
-                        textBoxes[i].BackColor = panel1.BackColor;
-                    }
+                        textBoxes[i] = new TextBox();
+                        textBoxes[i].Width = 30;
+                        textBoxes[i].Height = 30;
 
-                    if (j == sutun)
-                    {
-                        l.Text = "ARZ";
-                        panel1.Controls.Add(l);
+                        X_coordinate += 35;
+
+                        //textBoxes[i].Text = (i + 1).ToString();
+
+                        panel1.Controls.Add(textBoxes[i]);
                         panel1.Show();
-                        l.Location = new Point(X_coordinate, loc.Y + 30);
-                    }
-                    else if (i == satir)
-                    {
-                        ll.Text = "TALEP";
-                        panel1.Controls.Add(ll);
-                        panel1.Show();
-                        ll.Location = new Point((loc.X), Y_coordinate + 35);
-                    }
 
-                    textBoxes[i].Location = new Point(X_coordinate, Y_coordinate + 30);
+                        if (j == sutun || i == satir)
+                        {
+                            textBoxes[i].BackColor = Color.MistyRose;
+                        }
 
+                        //Arz ve Talep sütununlarının kesiştiği noktadaki textBox disabled edildi:
+                        if (i == satir && j == sutun)
+                        {
+                            textBoxes[i].Text ="0";
+                            textBoxes[i].Enabled = false;
+                            textBoxes[i].BackColor = panel1.BackColor;
+                        }
+
+                        if (j == sutun)
+                        {
+                            l.Text = "ARZ";
+                            panel1.Controls.Add(l);
+                            panel1.Show();
+                            l.Location = new Point(X_coordinate, loc.Y + 30);
+                        }
+                        else if (i == satir)
+                        {
+                            ll.Text = "TALEP";
+                            panel1.Controls.Add(ll);
+                            panel1.Show();
+                            ll.Location = new Point((loc.X), Y_coordinate + 35);
+                        }
+
+                        textBoxes[i].Location = new Point(X_coordinate, Y_coordinate + 30);
+
+                    }
                 }
             }
+        }
+
+        private bool NumericControl()
+        {
+            bool result = true;
+            Regex regex = new Regex(@"^\d+$");
+
+            foreach (Control t in panel1.Controls)
+            {
+                if (t is TextBox)
+                {
+                    TextBox tb = t as TextBox;
+
+                    if (!regex.IsMatch(tb.Text))
+                    {
+                        result = false;
+                        break;
+                    }
+                    else
+                    {
+                        result = true;
+                    }
+                }
+            }
+            return result;
+
         }
         private void GetTextBoxStrings()
         {
@@ -99,6 +135,7 @@ namespace endusukmaliyet
 
             int i = 1;
             int j = 1;
+
             foreach (Control c in panel1.Controls)
             {
                 if (c is TextBox)
@@ -141,6 +178,7 @@ namespace endusukmaliyet
                     i++;
 
                 }
+
             }
             ///En düşük maliyet hesaplanması algoritma kısmı
             for (i = 0; i < satir; i++)
@@ -246,13 +284,37 @@ namespace endusukmaliyet
 
             lbl_sonuc.Text = sum.ToString();
             MessageBox.Show("Toplam maliyet: " + sum);
-         
+
         }
         private void btnHesapla_Click(object sender, EventArgs e)
         {
-            GetTextBoxStrings();
+            bool result;
+            result=NumericControl();
+            if (result)
+            {
+                GetTextBoxStrings();
+            }
+            else
+            {
+                MessageBox.Show("Lütfen hücrelere geçerli bir sayı yazınız!");
+            }
+            
         }
 
-       
+        private void satir_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
+
+        private void sutun_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            if (!char.IsControl(e.KeyChar) && !char.IsDigit(e.KeyChar))
+            {
+                e.Handled = true;
+            }
+        }
     }
 }

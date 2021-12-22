@@ -48,6 +48,7 @@ namespace endusukmaliyet
             this.textBox1.Name = "textBox1";
             this.textBox1.Size = new System.Drawing.Size(108, 34);
             this.textBox1.TabIndex = 0;
+            this.textBox1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.satir_KeyPress);
             // 
             // button1
             // 
@@ -67,6 +68,7 @@ namespace endusukmaliyet
             this.textBox2.Name = "textBox2";
             this.textBox2.Size = new System.Drawing.Size(108, 34);
             this.textBox2.TabIndex = 3;
+            this.textBox2.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.sutun_KeyPress);
             // 
             // label1
             // 
