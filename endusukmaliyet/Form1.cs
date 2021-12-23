@@ -56,8 +56,6 @@ namespace endusukmaliyet
 
                         X_coordinate += 35;
 
-                        //textBoxes[i].Text = (i + 1).ToString();
-
                         panel1.Controls.Add(textBoxes[i]);
                         panel1.Show();
 
@@ -69,9 +67,7 @@ namespace endusukmaliyet
                         //Arz ve Talep sütununlarının kesiştiği noktadaki textBox disabled edildi:
                         if (i == satir && j == sutun)
                         {
-                            textBoxes[i].Text ="0";
-                            textBoxes[i].Enabled = false;
-                            textBoxes[i].BackColor = panel1.BackColor;
+                            textBoxes[i].Dispose();
                         }
 
                         if (j == sutun)
